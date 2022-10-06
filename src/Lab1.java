@@ -10,9 +10,9 @@ class Lab1 {
 
         scanner.close();
 
-        Point3d firstPoint = new Point3d.Builder().setX(x_1).setY(y_1).setZ(z_1).createPoint();
-        Point3d secondPoint = new Point3d.Builder().setX(x_2).setY(y_2).setZ(z_2).createPoint();
-        Point3d thirdPoint = new Point3d.Builder().setX(x_3).setY(y_3).setZ(z_3).createPoint();
+        Point3d firstPoint = new Point3d(x_1, y_1, z_1);
+        Point3d secondPoint = new Point3d(x_2, y_2, z_2);
+        Point3d thirdPoint = new Point3d(x_3, y_3, z_3);
 
         System.out.println(computeArea(firstPoint, secondPoint, thirdPoint));
     }

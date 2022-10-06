@@ -1,55 +1,15 @@
-class Point3d {
+class Point3d extends Point2d {
 
-    static class Builder {
-        protected double x = 0;
-        protected double y = 0;
-        protected double z = 0;
-
-        Builder() {}
-
-        public Builder setX(double x) {
-            this.x = x;
-            return this;
-        }
-
-        public Builder setY(double y) {
-            this.y = y;
-            return this;
-        }
-
-        public Builder setZ(double z) {
-            this.z = z;
-            return this;
-        }
-
-        public Point3d createPoint() {
-            return new Point3d(this);
-        }
+    public Point3d(double x, double y, double z) {
+        super(x, y);
+        this.z = z;
     }
 
-    private Point3d(Builder builder) {
-        this.x = builder.x;
-        this.y = builder.y;
-        this.z = builder.z;
+    public Point3d() {
+        this(0, 0, 0);
     }
 
-    private double x, y, z;
-
-    public double getX() {
-        return x;
-    }
-
-    public void setX(double x) {
-        this.x = x;
-    }
-
-    public double getY() {
-        return y;
-    }
-
-    public void setY(double y) {
-        this.y = y;
-    }
+    private double z;
 
     public double getZ() {
         return z;
@@ -60,12 +20,12 @@ class Point3d {
     }
 
     public boolean equals(Point3d anotherPoint) {
-        return this.x == anotherPoint.getX() && this.y == anotherPoint.getY() && this.z == anotherPoint.getZ();
+        return super.getX() == anotherPoint.getX() && super.getY() == anotherPoint.getY() && this.z == anotherPoint.getZ();
     }
 
     public double distanceTo(Point3d anotherPoint) {
-        double x = Math.pow(this.x - anotherPoint.getX(), 2);
-        double y = Math.pow(this.y - anotherPoint.getY(), 2);
+        double x = Math.pow(super.getX() - anotherPoint.getX(), 2);
+        double y = Math.pow(super.getY() - anotherPoint.getY(), 2);
         double z = Math.pow(this.z - anotherPoint.getZ(), 2);
 
         return Math.sqrt(x + y + z);
